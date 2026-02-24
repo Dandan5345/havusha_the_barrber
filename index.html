@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSavings - המדריך המלא</title>
+    <style>
+        /* עיצוב CSS - משפיע על המראה של האתר */
+        :root {
+            --primary-emerald: #10B981;
+            /* צבע הברקת שלך מהאפליקציה */
+            --dark-navy: #0F172A;
+            --bg-light: #F8FAFC;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            color: var(--dark-navy);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-emerald);
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 80px 10%;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .book-cover {
+            width: 300px;
+            height: 450px;
+            background-color: var(--primary-emerald);
+            border-radius: 10px;
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transform: rotate(-5deg);
+            transition: 0.3s;
+        }
+
+        .book-cover:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .btn {
+            background-color: var(--primary-emerald);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        section {
+            padding: 60px 10%;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        footer {
+            background-color: var(--dark-navy);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">SmartBooks</div>
+        <nav>
+            <a href="#" style="margin-right: 20px; text-decoration: none; color: inherit;">פרקים</a>
+            <a href="#" style="text-decoration: none; color: inherit;">ביקורות</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="hero-text">
+                <h1>הדרך לחופש כלכלי מתחילה כאן</h1>
+                <p>המדריך הבלעדי לניהול חסכונות חכם, שנבנה במיוחד עבור משתמשי SmartSavings. למד איך למקסם כל שקל ולהגיע
+                    ליעדים שלך מהר יותר.</p>
+                <a href="#" class="btn">הורד פרק ראשון חינם</a>
+            </div>
+            <div class="hero-image">
+                <div class="book-cover">
+                    <h2 style="font-size: 2rem;">Smart</h2>
+                    <h2 style="font-size: 2rem;">Savings</h2>
+                    <p>המדריך המלא</p>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <h2 style="text-align: center; margin-bottom: 40px;">מה תמצאו בספר?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>ניהול תקציב</h3>
+                    <p>איך לבנות תקציב שעובד בשבילך ולא נגדך.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>חיסכון ליעדים</h3>
+                    <p>שיטות מוכחות לחסוך למקבוק פרו או לטיול הבא בארה"ב.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>טיפים לזוגות</h3>
+                    <p>איך לנהל כסף יחד בלי מריבות (במיוחד לדורון ורוני).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 SmartSavings. נוצר ב-VS Code על MacBook Pro M4 Pro.</p>
+    </footer>
+
+</body>
+
+</html>
