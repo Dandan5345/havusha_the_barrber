@@ -14,6 +14,13 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <script>
+        const _saved = localStorage.getItem('havusha_theme');
+        if (_saved !== 'dark') {
+            document.documentElement.classList.add('light-mode');
+            window.addEventListener('DOMContentLoaded', () => document.body.classList.add('light-mode'));
+        }
+    </script>
 </head>
 
 <body>
@@ -24,9 +31,15 @@
                 <img src="../assets/logo.png" alt="Logo">
                 <span>Havusha The Barber</span>
             </a>
-            <button class="hamburger" id="hamburgerBtn" aria-label="תפריט">
-                <span></span><span></span><span></span>
-            </button>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="theme-toggle" id="themeToggle" aria-label="החלף עיצוב">
+                    <i class="fas fa-sun"></i>
+                </button>
+
+                <button class="hamburger" id="hamburgerBtn" aria-label="תפריט">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -37,12 +50,12 @@
             <h3>Havusha The Barber</h3>
         </div>
         <nav class="side-menu-nav">
-            <a href="../index.html"><i class="fas fa-home"></i> עמוד הבית</a>
-            <a href="shop.html" class="active"><i class="fas fa-store"></i> חנות</a>
-            <a href="courses.html"><i class="fas fa-graduation-cap"></i> הקורסים שלנו</a>
-            <a href="../index.html#about"><i class="fas fa-user"></i> קצת עליי</a>
-            <a href="gallery.html"><i class="fas fa-images"></i> גלריית העבודות שלנו</a>
-            <a href="contact.html"><i class="fas fa-envelope"></i> יצירת קשר</a>
+            <a href="../index.html"><i class="fas fa-home"></i> <span data-en="Home">עמוד הבית</span></a>
+            <a href="shop.html" class="active"><i class="fas fa-store"></i> <span data-en="Shop">חנות</span></a>
+            <a href="courses.html"><i class="fas fa-graduation-cap"></i> <span data-en="Courses">הקורסים שלנו</span></a>
+            <a href="../index.html#about"><i class="fas fa-user"></i> <span data-en="About Me">קצת עליי</span></a>
+            <a href="gallery.html"><i class="fas fa-images"></i> <span data-en="Gallery">גלריית העבודות שלנו</span></a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> <span data-en="Contact">יצירת קשר</span></a>
         </nav>
         <div class="side-menu-social">
             <a href="https://www.instagram.com/ariel.havusha?igsh=MTI4emNleXAzZG92NA==" target="_blank"><i
@@ -55,7 +68,7 @@
     <!-- Page Header -->
     <header class="page-header">
         <div class="container">
-            <h1>החנות שלנו</h1>
+            <h1 data-en="Our Shop">החנות שלנו</h1>
             <p>מוצרי שיער מקצועיים שנבחרו בקפידה עבורכם</p>
         </div>
     </header>

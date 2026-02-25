@@ -22,6 +22,13 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        const _saved = localStorage.getItem('havusha_theme');
+        if (_saved !== 'dark') {
+            document.documentElement.classList.add('light-mode');
+            window.addEventListener('DOMContentLoaded', () => document.body.classList.add('light-mode'));
+        }
+    </script>
 </head>
 
 <body>
@@ -39,11 +46,17 @@
                 <img src="assets/logo.png" alt="Logo">
                 <span>Havusha The Barber</span>
             </a>
-            <button class="hamburger" id="hamburgerBtn" aria-label="תפריט">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="theme-toggle" id="themeToggle" aria-label="החלף עיצוב">
+                    <i class="fas fa-sun"></i>
+                </button>
+
+                <button class="hamburger" id="hamburgerBtn" aria-label="תפריט">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -57,12 +70,14 @@
             <h3>Havusha The Barber</h3>
         </div>
         <nav class="side-menu-nav">
-            <a href="index.html" class="active"><i class="fas fa-home"></i> עמוד הבית</a>
-            <a href="pages/shop.html"><i class="fas fa-store"></i> חנות</a>
-            <a href="pages/courses.html"><i class="fas fa-graduation-cap"></i> הקורסים שלנו</a>
-            <a href="#about"><i class="fas fa-user"></i> קצת עליי</a>
-            <a href="pages/gallery.html"><i class="fas fa-images"></i> גלריית העבודות שלנו</a>
-            <a href="pages/contact.html"><i class="fas fa-envelope"></i> יצירת קשר</a>
+            <a href="index.html" class="active"><i class="fas fa-home"></i> <span data-en="Home">עמוד הבית</span></a>
+            <a href="pages/shop.html"><i class="fas fa-store"></i> <span data-en="Shop">חנות</span></a>
+            <a href="pages/courses.html"><i class="fas fa-graduation-cap"></i> <span data-en="Courses">הקורסים
+                    שלנו</span></a>
+            <a href="#about"><i class="fas fa-user"></i> <span data-en="About Me">קצת עליי</span></a>
+            <a href="pages/gallery.html"><i class="fas fa-images"></i> <span data-en="Gallery">גלריית העבודות
+                    שלנו</span></a>
+            <a href="pages/contact.html"><i class="fas fa-envelope"></i> <span data-en="Contact">יצירת קשר</span></a>
         </nav>
         <div class="side-menu-social">
             <a href="https://www.instagram.com/ariel.havusha?igsh=MTI4emNleXAzZG92NA==" target="_blank"
@@ -105,19 +120,21 @@
         <div class="hero-particles" id="particles"></div>
         <div class="hero-content">
             <img src="assets/logo.png" alt="Havusha The Barber" class="hero-logo">
-            <p class="hero-welcome">ברוכים הבאים</p>
+            <p class="hero-welcome" data-en="Welcome">ברוכים הבאים</p>
             <h1 class="hero-title">
                 Havusha The Barber
                 <span>אריאל חבושה</span>
             </h1>
-            <p class="hero-subtitle">חווית תספורת מקצועית ברמה הגבוהה ביותר. אנחנו כאן כדי לגרום לכם להיראות ולהרגיש הכי
+            <p class="hero-subtitle"
+                data-en="Professional haircut experience at the highest level. We're here to make you look and feel your best!">
+                חווית תספורת מקצועית ברמה הגבוהה ביותר. אנחנו כאן כדי לגרום לכם להיראות ולהרגיש הכי
                 טוב!</p>
             <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="openBookingModal()">
+                <button class="btn btn-primary" onclick="openBookingModal()" data-en="Book an Appointment Now">
                     <i class="fas fa-calendar-check btn-icon"></i>
                     קבעו תור עכשיו
                 </button>
-                <a href="pages/shop.html" class="btn btn-outline">
+                <a href="pages/shop.html" class="btn btn-outline" data-en="To Our Shop">
                     <i class="fas fa-store btn-icon"></i>
                     לחנות שלנו
                 </a>
@@ -341,11 +358,28 @@
                 <!-- Column 4 - Map -->
                 <div class="footer-col">
                     <h3>מצאו אותנו</h3>
-                    <div class="footer-map">
+                    <div class="footer-map" style="margin-bottom: 15px;">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3391.5!2d35.2050!3d31.7550!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z15LXkdeV15og15nXqNeV16nXnNeZ150!5e0!3m2!1siw!2sil!4v1234567890"
+                            src="https://maps.google.com/maps?q=%D7%90%D7%91%D7%99%D7%A2%D7%93%2010,%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D&t=&z=16&ie=UTF8&iwloc=&output=embed"
                             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <p style="margin-bottom: 10px; font-size: 0.95rem; color: var(--text-muted);">נווטו אלינו:</p>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="https://waze.com/ul?q=%D7%90%D7%91%D7%99%D7%A2%D7%93%2010,%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D&navigate=yes"
+                                target="_blank" class="btn btn-outline btn-sm"
+                                style="flex: 1; padding: 8px 10px; font-size: 0.9rem; justify-content: center; border-color: #33ccff; color: #33ccff;">
+                                <i class="fab fa-waze" style="font-size: 1.2rem;"></i> Waze
+                            </a>
+
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=%D7%90%D7%91%D7%99%D7%A2%D7%93+10,+%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D"
+                                target="_blank" class="btn btn-outline btn-sm"
+                                style="flex: 1; padding: 8px 10px; font-size: 0.9rem; justify-content: center; border-color: #ea4335; color: #ea4335;">
+                                <i class="fas fa-map-marker-alt" style="font-size: 1.2rem;"></i> Google
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

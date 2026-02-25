@@ -65,6 +65,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ---- Theme Toggle (Dark / Light Mode) ----
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+
+    // 1. בדיקה אם המשתמש כבר בחר מצב בעבר (ברירת מחדל - בהיר)
+    const savedTheme = localStorage.getItem('havusha_theme');
+    if (savedTheme === 'light' || !savedTheme) {
+        document.body.classList.add('light-mode');
+        if (themeIcon) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+    }
+
+    // 2. לחיצה על כפתור ההחלפה
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+
+            // בדיקה באיזה מצב אנחנו עכשיו ועדכון האייקון והזיכרון הדפדפן
+            if (document.body.classList.contains('light-mode')) {
+                localStorage.setItem('havusha_theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon'); // משנה לירח כדי שיוכל לחזור לכהה
+            } else {
+                localStorage.setItem('havusha_theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun'); // משנה לשמש
+            }
+        });
+    }
+
+
     // ---- Navbar Scroll Effect ----
     const navbar = document.getElementById('navbar');
     if (navbar && !navbar.classList.contains('scrolled')) {

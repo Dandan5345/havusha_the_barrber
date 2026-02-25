@@ -25,6 +25,55 @@
     --font-display: 'Playfair Display', Georgia, serif;
 }
 
+/* ---------- Light Mode Variables ---------- */
+body.light-mode {
+    --dark: #f4f4f9;
+    /* צבע רקע ראשי בהיר */
+    --dark-secondary: #ffffff;
+    /* צבע רקע משני (לבן) */
+    --dark-tertiary: #e9ecef;
+    /* רקע לאלמנטים בולטים */
+    --dark-card: #ffffff;
+    /* רקע לכרטיסיות */
+    --text-light: #222222;
+    /* צבע טקסט ראשי (הופך לכהה) */
+    --text-muted: #666666;
+    /* טקסט משני */
+    --white: #111111;
+    /* הופך צבע לבן לשחור כדי שיראו אותו על הרקע הבהיר */
+    --overlay: rgba(255, 255, 255, 0.8);
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* מעבר חלק כשמחליפים צבעים */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* התאמת תפריט הניווט למצב בהיר */
+body.light-mode .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* עיצוב כפתור החלפת המצב */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
 /* ---------- Reset & Base ---------- */
 *,
 *::before,
