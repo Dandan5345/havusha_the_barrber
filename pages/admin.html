@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>פאנל ניהול | Havusha The Barber</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" style="min-height:100vh; display:flex; align-items:center; justify-content:center;">
+        <div
+            style="background:var(--dark-card); border-radius:var(--radius); padding:50px; max-width:400px; width:90%; text-align:center; border:1px solid rgba(200,169,97,0.2);">
+            <img src="../assets/logo.png" alt="Logo"
+                style="width:80px; height:80px; border-radius:50%; border:3px solid var(--primary); margin-bottom:20px;">
+            <h2 style="font-family:var(--font-display); color:var(--primary); margin-bottom:5px;">פאנל ניהול</h2>
+            <p style="color:var(--text-muted); margin-bottom:30px;">Havusha The Barber</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="email" id="loginEmail" placeholder="אימייל" required style="text-align:center;">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginPassword" placeholder="סיסמה" required style="text-align:center;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">
+                    <i class="fas fa-sign-in-alt btn-icon"></i>
+                    כניסה
+                </button>
+                <p id="loginError" style="color:#e74c3c; margin-top:15px; font-size:0.9rem; display:none;"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard (hidden until login) -->
+    <div id="adminDashboard" style="display:none;">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <h2><i class="fas fa-crown" style="margin-left:8px;"></i> פאנל ניהול</h2>
+            <nav class="admin-nav">
+                <a href="#" class="active" data-section="dashboard"><i class="fas fa-chart-line"></i> לוח בקרה</a>
+                <a href="#" data-section="products"><i class="fas fa-store"></i> מוצרים</a>
+                <a href="#" data-section="gallery"><i class="fas fa-images"></i> גלריה</a>
+                <a href="#" data-section="reviews"><i class="fas fa-star"></i> ביקורות</a>
+                <a href="#" data-section="messages"><i class="fas fa-envelope"></i> הודעות</a>
+                <a href="#" data-section="settings"><i class="fas fa-cog"></i> הגדרות אתר</a>
+                <a href="#" id="logoutBtn" style="margin-top:20px; color:var(--primary);"><i
+                        class="fas fa-sign-out-alt"></i> התנתקות</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="admin-main">
+            <!-- Dashboard Section -->
+            <div id="section-dashboard" class="admin-section">
+                <div class="admin-header">
+                    <h1>לוח בקרה</h1>
+                    <span style="color:var(--text-muted);">ברוך הבא, אריאל!</span>
+                </div>
+
+                <div class="admin-grid">
+                    <div class="admin-stat-card">
+                        <i class="fas fa-box"></i>
+                        <span class="stat-number" id="statProducts">8</span>
+                        <span class="stat-label">מוצרים</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <i class="fas fa-images"></i>
+                        <span class="stat-number" id="statGallery">9</span>
+                        <span class="stat-label">תמונות בגלריה</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <i class="fas fa-star"></i>
+                        <span class="stat-number" id="statReviews">3</span>
+                        <span class="stat-label">ביקורות</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <i class="fas fa-envelope"></i>
+                        <span class="stat-number" id="statMessages">0</span>
+                        <span class="stat-label">הודעות</span>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <h3>פעולות מהירות</h3>
+                    <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                        <button class="btn btn-primary btn-sm" onclick="showSection('products')"><i
+                                class="fas fa-plus"></i> הוסף מוצר</button>
+                        <button class="btn btn-outline btn-sm" onclick="showSection('gallery')"><i
+                                class="fas fa-upload"></i> העלה תמונה</button>
+                        <button class="btn btn-outline btn-sm" onclick="showSection('reviews')"><i
+                                class="fas fa-star"></i> נהל ביקורות</button>
+                        <a href="../index.html" target="_blank" class="btn btn-outline btn-sm"><i
+                                class="fas fa-external-link-alt"></i> צפה באתר</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="section-products" class="admin-section" style="display:none;">
+                <div class="admin-header">
+                    <h1>ניהול מוצרים</h1>
+                    <button class="btn btn-primary btn-sm" id="addProductBtn"><i class="fas fa-plus"></i> הוסף
+                        מוצר</button>
+                </div>
+
+                <!-- Add/Edit Product Form -->
+                <div class="admin-card" id="productForm" style="display:none;">
+                    <h3 id="productFormTitle">הוסף מוצר חדש</h3>
+                    <form id="productFormInner">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                            <div class="form-group">
+                                <label>שם המוצר</label>
+                                <input type="text" id="productName" placeholder="שם המוצר" required>
+                            </div>
+                            <div class="form-group">
+                                <label>מחיר (₪)</label>
+                                <input type="number" id="productPrice" placeholder="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label>קטגוריה</label>
+                                <select id="productCategory"
+                                    style="width:100%; padding:14px 18px; background:var(--dark-tertiary); border:1px solid rgba(200,169,97,0.15); border-radius:var(--radius-sm); color:var(--text-light); font-size:1rem;">
+                                    <option value="wax">שעוות ועיצוב</option>
+                                    <option value="oil">שמנים</option>
+                                    <option value="shampoo">שמפו וטיפוח</option>
+                                    <option value="tools">כלי עבודה</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>תג (אופציונלי)</label>
+                                <input type="text" id="productBadge" placeholder="חדש / פופולרי / מומלץ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>תיאור</label>
+                            <textarea id="productDesc" placeholder="תיאור המוצר" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>קישור לתמונה</label>
+                            <input type="url" id="productImage" placeholder="https://...">
+                        </div>
+                        <div style="display:flex; gap:10px;">
+                            <button type="submit" class="btn btn-primary btn-sm">שמור</button>
+                            <button type="button" class="btn btn-outline btn-sm"
+                                onclick="document.getElementById('productForm').style.display='none'">ביטול</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="admin-card">
+                    <h3>רשימת מוצרים</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>שם</th>
+                                <th>קטגוריה</th>
+                                <th>מחיר</th>
+                                <th>תג</th>
+                                <th>פעולות</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody">
+                            <tr>
+                                <td>שעווה מקצועית - החזקה חזקה</td>
+                                <td>שעוות ועיצוב</td>
+                                <td>₪89</td>
+                                <td><span
+                                        style="background:var(--primary);color:var(--dark);padding:2px 8px;border-radius:10px;font-size:0.75rem;">פופולרי</span>
+                                </td>
+                                <td>
+                                    <button
+                                        style="background:none;color:var(--primary);border:none;cursor:pointer;margin-left:10px;"
+                                        title="ערוך"><i class="fas fa-edit"></i></button>
+                                    <button style="background:none;color:#e74c3c;border:none;cursor:pointer;"
+                                        title="מחק"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>שעווה לעיצוב - החזקה בינונית</td>
+                                <td>שעוות ועיצוב</td>
+                                <td>₪79</td>
+                                <td>—</td>
+                                <td>
+                                    <button
+                                        style="background:none;color:var(--primary);border:none;cursor:pointer;margin-left:10px;"
+                                        title="ערוך"><i class="fas fa-edit"></i></button>
+                                    <button style="background:none;color:#e74c3c;border:none;cursor:pointer;"
+                                        title="מחק"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>שמן לזקן - פרימיום</td>
+                                <td>שמנים</td>
+                                <td>₪99</td>
+                                <td><span
+                                        style="background:var(--primary);color:var(--dark);padding:2px 8px;border-radius:10px;font-size:0.75rem;">חדש</span>
+                                </td>
+                                <td>
+                                    <button
+                                        style="background:none;color:var(--primary);border:none;cursor:pointer;margin-left:10px;"
+                                        title="ערוך"><i class="fas fa-edit"></i></button>
+                                    <button style="background:none;color:#e74c3c;border:none;cursor:pointer;"
+                                        title="מחק"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div id="section-gallery" class="admin-section" style="display:none;">
+                <div class="admin-header">
+                    <h1>ניהול גלריה</h1>
+                    <button class="btn btn-primary btn-sm" id="addGalleryBtn"><i class="fas fa-upload"></i> העלה
+                        תמונה</button>
+                </div>
+
+                <div class="admin-card" id="galleryForm" style="display:none;">
+                    <h3>העלה תמונה חדשה</h3>
+                    <form id="galleryFormInner">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                            <div class="form-group">
+                                <label>כותרת</label>
+                                <input type="text" id="galleryTitle" placeholder="כותרת התמונה">
+                            </div>
+                            <div class="form-group">
+                                <label>קטגוריה</label>
+                                <input type="text" id="galleryCategory" placeholder="תספורת / עיצוב זקן / וכו׳">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>קישור לתמונה</label>
+                            <input type="url" id="galleryImage" placeholder="https://..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>תיאור</label>
+                            <textarea id="galleryDesc" placeholder="תיאור קצר" rows="2"></textarea>
+                        </div>
+                        <div style="display:flex; gap:10px;">
+                            <button type="submit" class="btn btn-primary btn-sm">שמור</button>
+                            <button type="button" class="btn btn-outline btn-sm"
+                                onclick="document.getElementById('galleryForm').style.display='none'">ביטול</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="admin-card">
+                    <h3>תמונות בגלריה</h3>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:15px;"
+                        id="adminGalleryGrid">
+                        <!-- Gallery items will be loaded from Firebase -->
+                        <div
+                            style="background:var(--dark-tertiary); border-radius:var(--radius-sm); padding:20px; text-align:center; border:1px dashed rgba(200,169,97,0.3);">
+                            <i class="fas fa-image"
+                                style="font-size:2rem; color:var(--primary); opacity:0.5; margin-bottom:10px;"></i>
+                            <p style="color:var(--text-muted); font-size:0.85rem;">תספורת קלאסית</p>
+                        </div>
+                        <div
+                            style="background:var(--dark-tertiary); border-radius:var(--radius-sm); padding:20px; text-align:center; border:1px dashed rgba(200,169,97,0.3);">
+                            <i class="fas fa-image"
+                                style="font-size:2rem; color:var(--primary); opacity:0.5; margin-bottom:10px;"></i>
+                            <p style="color:var(--text-muted); font-size:0.85rem;">פייד מודרני</p>
+                        </div>
+                        <div
+                            style="background:var(--dark-tertiary); border-radius:var(--radius-sm); padding:20px; text-align:center; border:1px dashed rgba(200,169,97,0.3);">
+                            <i class="fas fa-image"
+                                style="font-size:2rem; color:var(--primary); opacity:0.5; margin-bottom:10px;"></i>
+                            <p style="color:var(--text-muted); font-size:0.85rem;">עיצוב זקן</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Section -->
+            <div id="section-reviews" class="admin-section" style="display:none;">
+                <div class="admin-header">
+                    <h1>ניהול ביקורות</h1>
+                    <button class="btn btn-primary btn-sm" id="addReviewBtn"><i class="fas fa-plus"></i> הוסף
+                        ביקורת</button>
+                </div>
+
+                <div class="admin-card" id="reviewForm" style="display:none;">
+                    <h3>הוסף ביקורת חדשה</h3>
+                    <form id="reviewFormInner">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                            <div class="form-group">
+                                <label>שם הלקוח</label>
+                                <input type="text" id="reviewAuthor" placeholder="שם" required>
+                            </div>
+                            <div class="form-group">
+                                <label>דירוג (1-5)</label>
+                                <input type="number" id="reviewRating" min="1" max="5" value="5" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>תוכן הביקורת</label>
+                            <textarea id="reviewText" placeholder="מה הלקוח כתב..." rows="3" required></textarea>
+                        </div>
+                        <div style="display:flex; gap:10px;">
+                            <button type="submit" class="btn btn-primary btn-sm">שמור</button>
+                            <button type="button" class="btn btn-outline btn-sm"
+                                onclick="document.getElementById('reviewForm').style.display='none'">ביטול</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="admin-card">
+                    <h3>ביקורות</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>שם</th>
+                                <th>דירוג</th>
+                                <th>ביקורת</th>
+                                <th>פעולות</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reviewsTableBody">
+                            <tr>
+                                <td>דניאל כהן</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td style="max-width:300px;">שירות מדהים! אריאל ספר מקצועי ברמה הגבוהה ביותר...</td>
+                                <td>
+                                    <button
+                                        style="background:none;color:var(--primary);border:none;cursor:pointer;margin-left:10px;"
+                                        title="ערוך"><i class="fas fa-edit"></i></button>
+                                    <button style="background:none;color:#e74c3c;border:none;cursor:pointer;"
+                                        title="מחק"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>יוסי לוי</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td style="max-width:300px;">המקום הכי טוב בירושלים! היחס האישי...</td>
+                                <td>
+                                    <button
+                                        style="background:none;color:var(--primary);border:none;cursor:pointer;margin-left:10px;"
+                                        title="ערוך"><i class="fas fa-edit"></i></button>
+                                    <button style="background:none;color:#e74c3c;border:none;cursor:pointer;"
+                                        title="מחק"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Messages Section -->
+            <div id="section-messages" class="admin-section" style="display:none;">
+                <div class="admin-header">
+                    <h1>הודעות שהתקבלו</h1>
+                </div>
+                <div class="admin-card">
+                    <h3>הודעות</h3>
+                    <div id="messagesContainer">
+                        <div style="text-align:center; padding:40px; color:var(--text-muted);">
+                            <i class="fas fa-inbox" style="font-size:3rem; opacity:0.3; margin-bottom:15px;"></i>
+                            <p>אין הודעות חדשות</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div id="section-settings" class="admin-section" style="display:none;">
+                <div class="admin-header">
+                    <h1>הגדרות אתר</h1>
+                </div>
+
+                <div class="admin-card">
+                    <h3>הגדרות כלליות</h3>
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label>כותרת ראשית (Hero)</label>
+                            <input type="text" id="settingHeroTitle" value="Havusha The Barber">
+                        </div>
+                        <div class="form-group">
+                            <label>תת כותרת (Hero)</label>
+                            <textarea id="settingHeroSubtitle"
+                                rows="2">חווית תספורת מקצועית ברמה הגבוהה ביותר. אנחנו כאן כדי לגרום לכם להיראות ולהרגיש הכי טוב!</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>טקסט "קצת עליי"</label>
+                            <textarea id="settingAboutText"
+                                rows="4">אצלנו תקבלו שירות ברמה הגבוהה ביותר והיחס הטוב ביותר! אנחנו מתמחים בכל סוגי התספורות לגברים וילדים, בנוסף אצלנו ניתן למצוא את מוצרי השיער הכי טובים כיום והתאמת מוצרי שיער לכל לקוח.</textarea>
+                        </div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                            <div class="form-group">
+                                <label>טלפון</label>
+                                <input type="text" id="settingPhone" value="050-766-0332">
+                            </div>
+                            <div class="form-group">
+                                <label>כתובת</label>
+                                <input type="text" id="settingAddress" value="ירושלים, גבעת מרדכי, רחוב אביעד 10">
+                            </div>
+                            <div class="form-group">
+                                <label>קישור אינסטגרם</label>
+                                <input type="url" id="settingInstagram" value="https://www.instagram.com/ariel.havusha">
+                            </div>
+                            <div class="form-group">
+                                <label>קישור טיקטוק</label>
+                                <input type="url" id="settingTiktok" value="https://www.tiktok.com/@ariel76598">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fas fa-save"></i> שמור הגדרות
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+        import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkov9f0uC5MKdUFuwtjj7yu_ZYiE_koZ4",
+            authDomain: "havushathebarrber.firebaseapp.com",
+            projectId: "havushathebarrber",
+            storageBucket: "havushathebarrber.firebasestorage.app",
+            messagingSenderId: "114437493888",
+            appId: "1:114437493888:web:09e79cba2ac449ccad8265",
+            measurementId: "G-E55LDNMSJN"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // --- Auth ---
+        const loginScreen = document.getElementById('loginScreen');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginScreen.style.display = 'none';
+                adminDashboard.style.display = 'block';
+                loadDashboardData();
+            } else {
+                loginScreen.style.display = 'flex';
+                adminDashboard.style.display = 'none';
+            }
+        });
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                loginError.style.display = 'none';
+            } catch (error) {
+                loginError.textContent = 'שם משתמש או סיסמה שגויים';
+                loginError.style.display = 'block';
+            }
+        });
+
+        logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            signOut(auth);
+        });
+
+        // --- Navigation ---
+        window.showSection = function (sectionName) {
+            document.querySelectorAll('.admin-section').forEach(s => s.style.display = 'none');
+            document.getElementById('section-' + sectionName).style.display = 'block';
+            document.querySelectorAll('.admin-nav a').forEach(a => a.classList.remove('active'));
+            document.querySelector(`.admin-nav a[data-section="${sectionName}"]`)?.classList.add('active');
+        };
+
+        document.querySelectorAll('.admin-nav a[data-section]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showSection(link.dataset.section);
+            });
+        });
+
+        // --- Toggle Forms ---
+        document.getElementById('addProductBtn')?.addEventListener('click', () => {
+            const form = document.getElementById('productForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        });
+        document.getElementById('addGalleryBtn')?.addEventListener('click', () => {
+            const form = document.getElementById('galleryForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        });
+        document.getElementById('addReviewBtn')?.addEventListener('click', () => {
+            const form = document.getElementById('reviewForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // --- Firebase CRUD Operations ---
+        async function loadDashboardData() {
+            try {
+                // Load counts for dashboard
+                const productsSnap = await getDocs(collection(db, 'products'));
+                const gallerySnap = await getDocs(collection(db, 'gallery'));
+                const reviewsSnap = await getDocs(collection(db, 'reviews'));
+                const messagesSnap = await getDocs(collection(db, 'contactMessages'));
+
+                document.getElementById('statProducts').textContent = productsSnap.size || '8';
+                document.getElementById('statGallery').textContent = gallerySnap.size || '9';
+                document.getElementById('statReviews').textContent = reviewsSnap.size || '3';
+                document.getElementById('statMessages').textContent = messagesSnap.size || '0';
+            } catch (error) {
+                console.log('Using default data, Firebase collections not yet created:', error.message);
+            }
+        }
+
+        // Product Form Submit
+        document.getElementById('productFormInner')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                await addDoc(collection(db, 'products'), {
+                    name: document.getElementById('productName').value,
+                    price: Number(document.getElementById('productPrice').value),
+                    category: document.getElementById('productCategory').value,
+                    badge: document.getElementById('productBadge').value,
+                    description: document.getElementById('productDesc').value,
+                    imageUrl: document.getElementById('productImage').value,
+                    active: true,
+                    createdAt: new Date()
+                });
+                alert('המוצר נוסף בהצלחה!');
+                document.getElementById('productForm').style.display = 'none';
+                e.target.reset();
+                loadDashboardData();
+            } catch (error) {
+                alert('שגיאה: ' + error.message);
+            }
+        });
+
+        // Gallery Form Submit
+        document.getElementById('galleryFormInner')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                await addDoc(collection(db, 'gallery'), {
+                    title: document.getElementById('galleryTitle').value,
+                    category: document.getElementById('galleryCategory').value,
+                    imageUrl: document.getElementById('galleryImage').value,
+                    description: document.getElementById('galleryDesc').value,
+                    active: true,
+                    createdAt: new Date()
+                });
+                alert('התמונה נוספה בהצלחה!');
+                document.getElementById('galleryForm').style.display = 'none';
+                e.target.reset();
+                loadDashboardData();
+            } catch (error) {
+                alert('שגיאה: ' + error.message);
+            }
+        });
+
+        // Review Form Submit
+        document.getElementById('reviewFormInner')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                await addDoc(collection(db, 'reviews'), {
+                    author: document.getElementById('reviewAuthor').value,
+                    rating: Number(document.getElementById('reviewRating').value),
+                    text: document.getElementById('reviewText').value,
+                    active: true,
+                    createdAt: new Date()
+                });
+                alert('הביקורת נוספה בהצלחה!');
+                document.getElementById('reviewForm').style.display = 'none';
+                e.target.reset();
+                loadDashboardData();
+            } catch (error) {
+                alert('שגיאה: ' + error.message);
+            }
+        });
+
+        // Settings Form Submit
+        document.getElementById('settingsForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                await setDoc(doc(db, 'siteSettings', 'general'), {
+                    heroTitle: document.getElementById('settingHeroTitle').value,
+                    heroSubtitle: document.getElementById('settingHeroSubtitle').value,
+                    aboutText: document.getElementById('settingAboutText').value,
+                    phone: document.getElementById('settingPhone').value,
+                    address: document.getElementById('settingAddress').value,
+                    instagram: document.getElementById('settingInstagram').value,
+                    tiktok: document.getElementById('settingTiktok').value,
+                    updatedAt: new Date()
+                });
+                alert('ההגדרות נשמרו בהצלחה!');
+            } catch (error) {
+                alert('שגיאה: ' + error.message);
+            }
+        });
+    </script>
+</body>
+
+</html>

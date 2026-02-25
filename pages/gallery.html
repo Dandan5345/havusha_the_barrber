@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="גלריית העבודות של Havusha The Barber">
+    <title>גלריה | Havusha The Barber</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="../index.html" class="navbar-logo">
+                <img src="../assets/logo.png" alt="Logo">
+                <span>Havusha The Barber</span>
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="תפריט">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="side-menu-overlay" id="menuOverlay"></div>
+    <aside class="side-menu" id="sideMenu">
+        <div class="side-menu-logo">
+            <img src="../assets/logo.png" alt="Logo">
+            <h3>Havusha The Barber</h3>
+        </div>
+        <nav class="side-menu-nav">
+            <a href="../index.html"><i class="fas fa-home"></i> עמוד הבית</a>
+            <a href="shop.html"><i class="fas fa-store"></i> חנות</a>
+            <a href="courses.html"><i class="fas fa-graduation-cap"></i> הקורסים שלנו</a>
+            <a href="../index.html#about"><i class="fas fa-user"></i> קצת עליי</a>
+            <a href="gallery.html" class="active"><i class="fas fa-images"></i> גלריית העבודות שלנו</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> יצירת קשר</a>
+        </nav>
+        <div class="side-menu-social">
+            <a href="https://www.instagram.com/ariel.havusha?igsh=MTI4emNleXAzZG92NA==" target="_blank"><i
+                    class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@ariel76598" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/972507660332" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </aside>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>גלריית העבודות שלנו</h1>
+            <p>צפו בעבודות האחרונות שלנו</p>
+        </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="gallery section">
+        <div class="container">
+            <p class="section-subtitle fade-in">כל תספורת היא יצירת אמנות</p>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items - placeholders for now, will be loaded from Firebase -->
+                <div class="gallery-item gallery-placeholder fade-in">
+                    <i class="fas fa-cut"></i>
+                    <span>תספורת קלאסית</span>
+                </div>
+                <div class="gallery-item gallery-placeholder fade-in">
+                    <i class="fas fa-cut"></i>
+                    <span>פייד מודרני</span>
+                </div>
+                <div class="gallery-item gallery-placeholder fade-in">
+                    <i class="fas fa-cut"></i>
+                    <span>עיצוב זקן</span>
+                </div>
+                <div class="gallery-item gallery-placeholder fade-in">
+                    <i class="fas fa-cut"></i>
+                    <span>תספורת ילדים</span>
+                </div>
+                <div class="gallery-item gallery-placeholder fade-in">
+                    <i class="fas fa-cut"></i>
+                    <span>סקין פייד</span>
+                </div>
+                <div class="gallery-item gallery-placeholder fade-in">
+                    <i class="fas fa-cut"></i>
+                    <span>תספורת טקסטורה</span>
+                </div>
+                <div class="gallery-item gallery-placeholder fade-in">
+                    <i class="fas fa-cut"></i>
+                    <span>קרופ מודרני</span>
+                </div>
+                <div class="gallery-item gallery-placeholder fade-in">
+                    <i class="fas fa-cut"></i>
+                    <span>פומפדור</span>
+                </div>
+                <div class="gallery-item gallery-placeholder fade-in">
+                    <i class="fas fa-cut"></i>
+                    <span>באז קאט</span>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:50px;" class="fade-in">
+                <p style="color:var(--text-muted); margin-bottom:20px;">עקבו אחרינו באינסטגרם לצפייה בעוד עבודות</p>
+                <a href="https://www.instagram.com/ariel.havusha?igsh=MTI4emNleXAzZG92NA==" target="_blank"
+                    class="btn btn-outline">
+                    <i class="fab fa-instagram btn-icon"></i>
+                    לאינסטגרם שלנו
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2025 <span>Havusha The Barber</span>. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkov9f0uC5MKdUFuwtjj7yu_ZYiE_koZ4",
+            authDomain: "havushathebarrber.firebaseapp.com",
+            projectId: "havushathebarrber",
+            storageBucket: "havushathebarrber.firebasestorage.app",
+            messagingSenderId: "114437493888",
+            appId: "1:114437493888:web:09e79cba2ac449ccad8265",
+            measurementId: "G-E55LDNMSJN"
+        };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        window.firebaseApp = app;
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

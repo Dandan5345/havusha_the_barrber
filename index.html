@@ -4,172 +4,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartSavings - המדריך המלא</title>
-    <style>
-        /* עיצוב CSS - משפיע על המראה של האתר */
-        :root {
-            --primary-emerald: #10B981;
-            /* צבע הברקת שלך מהאפליקציה */
-            --dark-navy: #0F172A;
-            --bg-light: #F8FAFC;
-        }
+    <meta name="description"
+        content="Havusha The Barber - מספרה מקצועית בירושלים, גבעת מרדכי. תספורות גברים וילדים ברמה הגבוהה ביותר.">
+    <meta name="keywords" content="מספרה, ספר, ירושלים, גבעת מרדכי, תספורת, Havusha, Barber">
+    <title>Havusha The Barber | אריאל חבושה</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-light);
-            margin: 0;
-            color: var(--dark-navy);
-            line-height: 1.6;
-        }
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
 
-        header {
-            background-color: white;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-emerald);
-        }
-
-        .hero {
-            display: flex;
-            align-items: center;
-            padding: 80px 10%;
-            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
-        }
-
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-text h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .book-cover {
-            width: 300px;
-            height: 450px;
-            background-color: var(--primary-emerald);
-            border-radius: 10px;
-            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            transform: rotate(-5deg);
-            transition: 0.3s;
-        }
-
-        .book-cover:hover {
-            transform: rotate(0deg) scale(1.05);
-        }
-
-        .btn {
-            background-color: var(--primary-emerald);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        section {
-            padding: 60px 10%;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-        }
-
-        footer {
-            background-color: var(--dark-navy);
-            color: white;
-            text-align: center;
-            padding: 40px;
-            margin-top: 40px;
-        }
-    </style>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">SmartBooks</div>
-        <nav>
-            <a href="#" style="margin-right: 20px; text-decoration: none; color: inherit;">פרקים</a>
-            <a href="#" style="text-decoration: none; color: inherit;">ביקורות</a>
-        </nav>
-    </header>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader-screen">
+        <img src="assets/logo.png" alt="Havusha The Barber">
+        <div class="loader-spinner"></div>
+    </div>
 
-    <main>
-        <div class="hero">
-            <div class="hero-text">
-                <h1>הדרך לחופש כלכלי מתחילה כאן</h1>
-                <p>המדריך הבלעדי לניהול חסכונות חכם, שנבנה במיוחד עבור משתמשי SmartSavings. למד איך למקסם כל שקל ולהגיע
-                    ליעדים שלך מהר יותר.</p>
-                <a href="#" class="btn">הורד פרק ראשון חינם</a>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/logo.png" alt="Logo">
+                <span>Havusha The Barber</span>
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="תפריט">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Side Menu Overlay -->
+    <div class="side-menu-overlay" id="menuOverlay"></div>
+
+    <!-- Side Menu -->
+    <aside class="side-menu" id="sideMenu">
+        <div class="side-menu-logo">
+            <img src="assets/logo.png" alt="Logo">
+            <h3>Havusha The Barber</h3>
+        </div>
+        <nav class="side-menu-nav">
+            <a href="index.html" class="active"><i class="fas fa-home"></i> עמוד הבית</a>
+            <a href="pages/shop.html"><i class="fas fa-store"></i> חנות</a>
+            <a href="pages/courses.html"><i class="fas fa-graduation-cap"></i> הקורסים שלנו</a>
+            <a href="#about"><i class="fas fa-user"></i> קצת עליי</a>
+            <a href="pages/gallery.html"><i class="fas fa-images"></i> גלריית העבודות שלנו</a>
+            <a href="pages/contact.html"><i class="fas fa-envelope"></i> יצירת קשר</a>
+        </nav>
+        <div class="side-menu-social">
+            <a href="https://www.instagram.com/ariel.havusha?igsh=MTI4emNleXAzZG92NA==" target="_blank"
+                aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@ariel76598" target="_blank" aria-label="TikTok"><i
+                    class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/972507660332" target="_blank" aria-label="WhatsApp"><i
+                    class="fab fa-whatsapp"></i></a>
+        </div>
+    </aside>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal" style="position:relative;">
+            <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+            <h3>📅 קביעת תור</h3>
+            <p>בחרו את הדרך הנוחה לכם לקבוע תור</p>
+            <div class="modal-options">
+                <a href="https://apps.apple.com/il/app/havusha-the-barber/id6501984799?l=he" target="_blank"
+                    class="modal-option">
+                    <i class="fab fa-apple"></i>
+                    <span>הורדה מ-App Store</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.smtio.havushathebarber&pcampaignid=web_share"
+                    target="_blank" class="modal-option">
+                    <i class="fab fa-google-play"></i>
+                    <span>הורדה מ-Google Play</span>
+                </a>
+                <a href="https://wa.me/972507660332?text=היי%20אריאל%2C%20אשמח%20לקבוע%20תור" target="_blank"
+                    class="modal-option">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>קביעת תור דרך וואטסאפ</span>
+                </a>
             </div>
-            <div class="hero-image">
-                <div class="book-cover">
-                    <h2 style="font-size: 2rem;">Smart</h2>
-                    <h2 style="font-size: 2rem;">Savings</h2>
-                    <p>המדריך המלא</p>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-content">
+            <img src="assets/logo.png" alt="Havusha The Barber" class="hero-logo">
+            <p class="hero-welcome">ברוכים הבאים</p>
+            <h1 class="hero-title">
+                Havusha The Barber
+                <span>אריאל חבושה</span>
+            </h1>
+            <p class="hero-subtitle">חווית תספורת מקצועית ברמה הגבוהה ביותר. אנחנו כאן כדי לגרום לכם להיראות ולהרגיש הכי
+                טוב!</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="openBookingModal()">
+                    <i class="fas fa-calendar-check btn-icon"></i>
+                    קבעו תור עכשיו
+                </button>
+                <a href="pages/shop.html" class="btn btn-outline">
+                    <i class="fas fa-store btn-icon"></i>
+                    לחנות שלנו
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Shop Preview Section -->
+    <section class="shop-preview section" id="shop-preview">
+        <div class="container">
+            <h2 class="section-title fade-in">המוצרים שלנו</h2>
+            <div class="section-divider fade-in"></div>
+            <p class="section-subtitle fade-in">מוצרי השיער הטובים ביותר שנבחרו בקפידה עבורכם</p>
+
+            <div class="shop-preview-grid" id="shopPreviewGrid">
+                <!-- Products loaded from Firebase or defaults -->
+                <div class="shop-card fade-in">
+                    <div class="shop-card-img">
+                        <i class="fas fa-pump-soap placeholder-icon"></i>
+                    </div>
+                    <div class="shop-card-body">
+                        <h3 class="shop-card-title">שעווה לעיצוב השיער</h3>
+                        <p class="shop-card-desc">שעווה מקצועית להחזקה חזקה ומראה טבעי</p>
+                        <span class="shop-card-price">₪89</span>
+                    </div>
+                </div>
+                <div class="shop-card fade-in">
+                    <div class="shop-card-img">
+                        <i class="fas fa-spray-can-sparkles placeholder-icon"></i>
+                    </div>
+                    <div class="shop-card-body">
+                        <h3 class="shop-card-title">ספריי מעצב</h3>
+                        <p class="shop-card-desc">ספריי מעצב לנפח והחזקה לאורך כל היום</p>
+                        <span class="shop-card-price">₪69</span>
+                    </div>
+                </div>
+                <div class="shop-card fade-in">
+                    <div class="shop-card-img">
+                        <i class="fas fa-bottle-droplet placeholder-icon"></i>
+                    </div>
+                    <div class="shop-card-body">
+                        <h3 class="shop-card-title">שמן לזקן</h3>
+                        <p class="shop-card-desc">שמן טיפולי לזקן רך ומטופח</p>
+                        <span class="shop-card-price">₪79</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-cta fade-in">
+                <a href="pages/shop.html" class="btn btn-outline">
+                    <i class="fas fa-store btn-icon"></i>
+                    לכל המוצרים
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews section" id="reviews">
+        <div class="container">
+            <h2 class="section-title fade-in">מה הלקוחות אומרים</h2>
+            <div class="section-divider fade-in"></div>
+            <p class="section-subtitle fade-in">הביקורות של הלקוחות המרוצים שלנו</p>
+
+            <div class="reviews-grid" id="reviewsGrid">
+                <div class="review-card fade-in">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">שירות מדהים! אריאל ספר מקצועי ברמה הגבוהה ביותר. יוצא כל פעם עם תספורת
+                        מושלמת. ממליץ בחום!</p>
+                    <div class="review-author">
+                        <div class="review-avatar">ד</div>
+                        <div class="review-author-info">
+                            <h4>דניאל כהן</h4>
+                            <span>לקוח קבוע</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card fade-in">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">המקום הכי טוב בירושלים! היחס האישי, המקצועיות והאווירה - הכל ברמה אחרת. לא
+                        מחליף את אריאל באף אחד.</p>
+                    <div class="review-author">
+                        <div class="review-avatar">י</div>
+                        <div class="review-author-info">
+                            <h4>יוסי לוי</h4>
+                            <span>לקוח קבוע</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card fade-in">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">הבן שלי מסרב ללכת לכל ספר אחר! אריאל יודע בדיוק איך לטפל בילדים ולתת להם
+                        חוויה כיפית. תודה רבה!</p>
+                    <div class="review-author">
+                        <div class="review-avatar">מ</div>
+                        <div class="review-author-info">
+                            <h4>משה אברהם</h4>
+                            <span>הורה מרוצה</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <section>
-            <h2 style="text-align: center; margin-bottom: 40px;">מה תמצאו בספר?</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>ניהול תקציב</h3>
-                    <p>איך לבנות תקציב שעובד בשבילך ולא נגדך.</p>
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">קצת עליי</h2>
+            <div class="section-divider fade-in"></div>
+
+            <div class="about-wrapper">
+                <div class="about-image fade-in-right">
+                    <img src="assets/logo.png" alt="אריאל חבושה" id="aboutImage">
                 </div>
-                <div class="feature-card">
-                    <h3>חיסכון ליעדים</h3>
-                    <p>שיטות מוכחות לחסוך למקבוק פרו או לטיול הבא בארה"ב.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>טיפים לזוגות</h3>
-                    <p>איך לנהל כסף יחד בלי מריבות (במיוחד לדורון ורוני).</p>
+                <div class="about-text fade-in-left">
+                    <h2>Havusha The Barber</h2>
+                    <p class="about-tagline">אריאל חבושה — ספר מקצועי בירושלים</p>
+                    <p>
+                        אצלנו תקבלו שירות ברמה הגבוהה ביותר והיחס הטוב ביותר!
+                        אנחנו מתמחים בכל סוגי התספורות לגברים וילדים, בנוסף אצלנו ניתן למצוא
+                        את מוצרי השיער הכי טובים כיום והתאמת מוצרי שיער לכל לקוח.
+                    </p>
+                    <p>
+                        המספרה שלנו ממוקמת בגבעת מרדכי, ירושלים ומציעה אווירה נעימה ומקצועית.
+                        אנחנו מאמינים שכל לקוח ראוי ליחס אישי ולתספורת שמותאמת בדיוק עבורו.
+                    </p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="number" data-target="1000">1000+</span>
+                            <span class="label">לקוחות מרוצים</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="number">5+</span>
+                            <span class="label">שנות ניסיון</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="number">5.0</span>
+                            <span class="label">דירוג ממוצע</span>
+                        </div>
+                    </div>
+                    <div style="margin-top:30px;">
+                        <button class="btn btn-primary" onclick="openBookingModal()">
+                            <i class="fas fa-calendar-check btn-icon"></i>
+                            קבעו תור עכשיו
+                        </button>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer>
-        <p>© 2026 SmartSavings. נוצר ב-VS Code על MacBook Pro M4 Pro.</p>
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Column 1 - About -->
+                <div class="footer-col">
+                    <h3>Havusha The Barber</h3>
+                    <p>מספרה מקצועית בירושלים. אצלנו תקבלו שירות ברמה הגבוהה ביותר והיחס הטוב ביותר!</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/ariel.havusha?igsh=MTI4emNleXAzZG92NA==" target="_blank"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@ariel76598" target="_blank" aria-label="TikTok"><i
+                                class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/972507660332" target="_blank" aria-label="WhatsApp"><i
+                                class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2 - Quick Links -->
+                <div class="footer-col">
+                    <h3>קישורים מהירים</h3>
+                    <a href="index.html" class="footer-link"><i class="fas fa-chevron-left"></i> עמוד הבית</a>
+                    <a href="pages/shop.html" class="footer-link"><i class="fas fa-chevron-left"></i> חנות</a>
+                    <a href="pages/courses.html" class="footer-link"><i class="fas fa-chevron-left"></i> קורסים</a>
+                    <a href="pages/gallery.html" class="footer-link"><i class="fas fa-chevron-left"></i> גלריה</a>
+                    <a href="pages/contact.html" class="footer-link"><i class="fas fa-chevron-left"></i> יצירת קשר</a>
+                </div>
+
+                <!-- Column 3 - Contact -->
+                <div class="footer-col">
+                    <h3>צרו קשר</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>ירושלים, גבעת מרדכי<br>רחוב אביעד 10</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span><a href="tel:0507660332">050-766-0332</a></span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span><a href="https://wa.me/972507660332">שלחו הודעה בוואטסאפ</a></span>
+                    </div>
+                    <h3 style="margin-top:20px;">הורידו את האפליקציה</h3>
+                    <div class="footer-apps">
+                        <a href="https://apps.apple.com/il/app/havusha-the-barber/id6501984799?l=he" target="_blank"
+                            class="footer-app-badge">
+                            <i class="fab fa-apple"></i> App Store
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.smtio.havushathebarber&pcampaignid=web_share"
+                            target="_blank" class="footer-app-badge">
+                            <i class="fab fa-google-play"></i> Google Play
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 4 - Map -->
+                <div class="footer-col">
+                    <h3>מצאו אותנו</h3>
+                    <div class="footer-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3391.5!2d35.2050!3d31.7550!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z15LXkdeV15og15nXqNeV16nXnNeZ150!5e0!3m2!1siw!2sil!4v1234567890"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 <span>Havusha The Barber</span>. כל הזכויות שמורות.</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkov9f0uC5MKdUFuwtjj7yu_ZYiE_koZ4",
+            authDomain: "havushathebarrber.firebaseapp.com",
+            projectId: "havushathebarrber",
+            storageBucket: "havushathebarrber.firebasestorage.app",
+            messagingSenderId: "114437493888",
+            appId: "1:114437493888:web:09e79cba2ac449ccad8265",
+            measurementId: "G-E55LDNMSJN"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        // Make Firebase available globally
+        window.firebaseApp = app;
+    </script>
+
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>

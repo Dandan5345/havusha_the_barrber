@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="קורסים של Havusha The Barber - בקרוב!">
+    <title>הקורסים שלנו | Havusha The Barber</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="../index.html" class="navbar-logo">
+                <img src="../assets/logo.png" alt="Logo">
+                <span>Havusha The Barber</span>
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="תפריט">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="side-menu-overlay" id="menuOverlay"></div>
+    <aside class="side-menu" id="sideMenu">
+        <div class="side-menu-logo">
+            <img src="../assets/logo.png" alt="Logo">
+            <h3>Havusha The Barber</h3>
+        </div>
+        <nav class="side-menu-nav">
+            <a href="../index.html"><i class="fas fa-home"></i> עמוד הבית</a>
+            <a href="shop.html"><i class="fas fa-store"></i> חנות</a>
+            <a href="courses.html" class="active"><i class="fas fa-graduation-cap"></i> הקורסים שלנו</a>
+            <a href="../index.html#about"><i class="fas fa-user"></i> קצת עליי</a>
+            <a href="gallery.html"><i class="fas fa-images"></i> גלריית העבודות שלנו</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> יצירת קשר</a>
+        </nav>
+        <div class="side-menu-social">
+            <a href="https://www.instagram.com/ariel.havusha?igsh=MTI4emNleXAzZG92NA==" target="_blank"><i
+                    class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@ariel76598" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/972507660332" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </aside>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>הקורסים שלנו!</h1>
+            <p>בקרוב — קורסים מקצועיים בספרות</p>
+        </div>
+    </header>
+
+    <!-- Coming Soon Section -->
+    <section class="section courses-coming-soon">
+        <div class="container">
+            <div class="coming-soon-content fade-in">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>בקרוב!</h2>
+                <p>
+                    אנחנו עובדים על משהו מיוחד! קורסים מקצועיים בספרות שילמדו אתכם את כל הסודות והטכניקות
+                    של תספורות מקצועיות. הירשמו לקבלת עדכון כשנפתח!
+                </p>
+
+                <div
+                    style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:25px; max-width:800px; margin:40px auto; text-align:center;">
+                    <div style="background:var(--dark-card); padding:30px; border-radius:var(--radius); border:1px solid rgba(200,169,97,0.1);"
+                        class="fade-in">
+                        <i class="fas fa-cut" style="font-size:2.5rem; color:var(--primary); margin-bottom:15px;"></i>
+                        <h3 style="color:var(--white); margin-bottom:10px;">קורס תספורות בסיסי</h3>
+                        <p style="color:var(--text-muted); font-size:0.9rem;">למדו את הבסיס של תספורות גברים מקצועיות
+                        </p>
+                    </div>
+                    <div style="background:var(--dark-card); padding:30px; border-radius:var(--radius); border:1px solid rgba(200,169,97,0.1);"
+                        class="fade-in">
+                        <i class="fas fa-star" style="font-size:2.5rem; color:var(--primary); margin-bottom:15px;"></i>
+                        <h3 style="color:var(--white); margin-bottom:10px;">קורס מתקדם</h3>
+                        <p style="color:var(--text-muted); font-size:0.9rem;">טכניקות מתקדמות ועיצוב שיער ברמה גבוהה</p>
+                    </div>
+                    <div style="background:var(--dark-card); padding:30px; border-radius:var(--radius); border:1px solid rgba(200,169,97,0.1);"
+                        class="fade-in">
+                        <i class="fas fa-briefcase"
+                            style="font-size:2.5rem; color:var(--primary); margin-bottom:15px;"></i>
+                        <h3 style="color:var(--white); margin-bottom:10px;">קורס ניהול מספרה</h3>
+                        <p style="color:var(--text-muted); font-size:0.9rem;">איך לבנות ולנהל מספרה מצליחה</p>
+                    </div>
+                </div>
+
+                <div class="coming-soon-notify">
+                    <input type="email" placeholder="הכניסו את המייל שלכם לקבלת עדכונים" id="notifyEmail">
+                    <button class="btn btn-primary" onclick="alert('תודה! נעדכן אותך כשהקורסים יהיו זמינים.')">
+                        <i class="fas fa-bell btn-icon"></i>
+                        עדכנו אותי
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2025 <span>Havusha The Barber</span>. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkov9f0uC5MKdUFuwtjj7yu_ZYiE_koZ4",
+            authDomain: "havushathebarrber.firebaseapp.com",
+            projectId: "havushathebarrber",
+            storageBucket: "havushathebarrber.firebasestorage.app",
+            messagingSenderId: "114437493888",
+            appId: "1:114437493888:web:09e79cba2ac449ccad8265",
+            measurementId: "G-E55LDNMSJN"
+        };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        window.firebaseApp = app;
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="חנות Havusha The Barber - מוצרי שיער מקצועיים">
+    <title>חנות | Havusha The Barber</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="../index.html" class="navbar-logo">
+                <img src="../assets/logo.png" alt="Logo">
+                <span>Havusha The Barber</span>
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="תפריט">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="side-menu-overlay" id="menuOverlay"></div>
+    <aside class="side-menu" id="sideMenu">
+        <div class="side-menu-logo">
+            <img src="../assets/logo.png" alt="Logo">
+            <h3>Havusha The Barber</h3>
+        </div>
+        <nav class="side-menu-nav">
+            <a href="../index.html"><i class="fas fa-home"></i> עמוד הבית</a>
+            <a href="shop.html" class="active"><i class="fas fa-store"></i> חנות</a>
+            <a href="courses.html"><i class="fas fa-graduation-cap"></i> הקורסים שלנו</a>
+            <a href="../index.html#about"><i class="fas fa-user"></i> קצת עליי</a>
+            <a href="gallery.html"><i class="fas fa-images"></i> גלריית העבודות שלנו</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> יצירת קשר</a>
+        </nav>
+        <div class="side-menu-social">
+            <a href="https://www.instagram.com/ariel.havusha?igsh=MTI4emNleXAzZG92NA==" target="_blank"><i
+                    class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@ariel76598" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/972507660332" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </aside>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>החנות שלנו</h1>
+            <p>מוצרי שיער מקצועיים שנבחרו בקפידה עבורכם</p>
+        </div>
+    </header>
+
+    <!-- Shop Section -->
+    <section class="section">
+        <div class="container">
+            <!-- Filter Tabs -->
+            <div style="display:flex; gap:10px; justify-content:center; margin-bottom:40px; flex-wrap:wrap;"
+                class="fade-in">
+                <button class="btn btn-primary btn-sm shop-filter active" data-filter="all">הכל</button>
+                <button class="btn btn-outline btn-sm shop-filter" data-filter="wax">שעוות ועיצוב</button>
+                <button class="btn btn-outline btn-sm shop-filter" data-filter="oil">שמנים</button>
+                <button class="btn btn-outline btn-sm shop-filter" data-filter="shampoo">שמפו וטיפוח</button>
+                <button class="btn btn-outline btn-sm shop-filter" data-filter="tools">כלי עבודה</button>
+            </div>
+
+            <div class="shop-grid" id="shopGrid">
+                <!-- Product 1 -->
+                <div class="product-card fade-in" data-category="wax">
+                    <div class="product-image">
+                        <i class="fas fa-pump-soap placeholder-icon"
+                            style="font-size:3rem;color:var(--primary);opacity:0.5;"></i>
+                        <span class="product-badge">פופולרי</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>שעווה מקצועית - החזקה חזקה</h3>
+                        <p class="product-desc">שעווה מקצועית לעיצוב השיער עם החזקה חזקה ומראה מט טבעי. מתאימה לכל סוגי
+                            השיער.</p>
+                        <span class="product-price">₪89</span>
+                        <div class="product-actions">
+                            <button class="btn btn-primary btn-sm" onclick="alert('החנות תהיה זמינה בקרוב!')">הוסף
+                                לסל</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card fade-in" data-category="wax">
+                    <div class="product-image">
+                        <i class="fas fa-pump-soap placeholder-icon"
+                            style="font-size:3rem;color:var(--primary);opacity:0.5;"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>שעווה לעיצוב - החזקה בינונית</h3>
+                        <p class="product-desc">שעווה לעיצוב יומיומי עם החזקה בינונית וגמישות מלאה.</p>
+                        <span class="product-price">₪79</span>
+                        <div class="product-actions">
+                            <button class="btn btn-primary btn-sm" onclick="alert('החנות תהיה זמינה בקרוב!')">הוסף
+                                לסל</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card fade-in" data-category="oil">
+                    <div class="product-image">
+                        <i class="fas fa-bottle-droplet placeholder-icon"
+                            style="font-size:3rem;color:var(--primary);opacity:0.5;"></i>
+                        <span class="product-badge">חדש</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>שמן לזקן - פרימיום</h3>
+                        <p class="product-desc">שמן טיפולי עשיר לזקן רך, מטופח ובריא. מכיל שמנים טבעיים.</p>
+                        <span class="product-price">₪99</span>
+                        <div class="product-actions">
+                            <button class="btn btn-primary btn-sm" onclick="alert('החנות תהיה זמינה בקרוב!')">הוסף
+                                לסל</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card fade-in" data-category="shampoo">
+                    <div class="product-image">
+                        <i class="fas fa-bottle-water placeholder-icon"
+                            style="font-size:3rem;color:var(--primary);opacity:0.5;"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>שמפו מקצועי</h3>
+                        <p class="product-desc">שמפו מקצועי לשיער בריא ומבריק. מתאים לשימוש יומיומי.</p>
+                        <span class="product-price">₪59</span>
+                        <div class="product-actions">
+                            <button class="btn btn-primary btn-sm" onclick="alert('החנות תהיה זמינה בקרוב!')">הוסף
+                                לסל</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card fade-in" data-category="shampoo">
+                    <div class="product-image">
+                        <i class="fas fa-bottle-water placeholder-icon"
+                            style="font-size:3rem;color:var(--primary);opacity:0.5;"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>מרכך שיער מטפח</h3>
+                        <p class="product-desc">מרכך מקצועי לשיער חלק, רך ומבריק. עם ויטמינים ומינרלים.</p>
+                        <span class="product-price">₪65</span>
+                        <div class="product-actions">
+                            <button class="btn btn-primary btn-sm" onclick="alert('החנות תהיה זמינה בקרוב!')">הוסף
+                                לסל</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card fade-in" data-category="wax">
+                    <div class="product-image">
+                        <i class="fas fa-spray-can-sparkles placeholder-icon"
+                            style="font-size:3rem;color:var(--primary);opacity:0.5;"></i>
+                        <span class="product-badge">מומלץ</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>ספריי מעצב</h3>
+                        <p class="product-desc">ספריי מעצב לנפח והחזקה מעולה לאורך כל היום.</p>
+                        <span class="product-price">₪69</span>
+                        <div class="product-actions">
+                            <button class="btn btn-primary btn-sm" onclick="alert('החנות תהיה זמינה בקרוב!')">הוסף
+                                לסל</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card fade-in" data-category="oil">
+                    <div class="product-image">
+                        <i class="fas fa-bottle-droplet placeholder-icon"
+                            style="font-size:3rem;color:var(--primary);opacity:0.5;"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>שמן שיער טיפולי</h3>
+                        <p class="product-desc">שמן טיפולי לשיער יבש ופגום. משקם ומחזק את השיער.</p>
+                        <span class="product-price">₪85</span>
+                        <div class="product-actions">
+                            <button class="btn btn-primary btn-sm" onclick="alert('החנות תהיה זמינה בקרוב!')">הוסף
+                                לסל</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card fade-in" data-category="tools">
+                    <div class="product-image">
+                        <i class="fas fa-scissors placeholder-icon"
+                            style="font-size:3rem;color:var(--primary);opacity:0.5;"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>מסרק מקצועי</h3>
+                        <p class="product-desc">מסרק מקצועי לעיצוב השיער. עמיד ונוח לשימוש.</p>
+                        <span class="product-price">₪35</span>
+                        <div class="product-actions">
+                            <button class="btn btn-primary btn-sm" onclick="alert('החנות תהיה זמינה בקרוב!')">הוסף
+                                לסל</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:50px; padding:30px; background:var(--dark-card); border-radius:var(--radius); border:1px dashed var(--primary);"
+                class="fade-in">
+                <i class="fas fa-shopping-bag" style="font-size:2rem; color:var(--primary); margin-bottom:15px;"></i>
+                <h3 style="color:var(--primary); margin-bottom:10px;">החנות המלאה בקרוב!</h3>
+                <p style="color:var(--text-muted);">אנחנו עובדים על חנות מלאה עם אפשרות להזמנה אונליין. עקבו אחרינו
+                    לעדכונים!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2025 <span>Havusha The Barber</span>. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkov9f0uC5MKdUFuwtjj7yu_ZYiE_koZ4",
+            authDomain: "havushathebarrber.firebaseapp.com",
+            projectId: "havushathebarrber",
+            storageBucket: "havushathebarrber.firebasestorage.app",
+            messagingSenderId: "114437493888",
+            appId: "1:114437493888:web:09e79cba2ac449ccad8265",
+            measurementId: "G-E55LDNMSJN"
+        };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        window.firebaseApp = app;
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
